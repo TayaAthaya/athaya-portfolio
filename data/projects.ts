@@ -5,7 +5,7 @@ export interface Project {
   tags: string[];
   category: string;
   year: string;
-  emoji: string;
+  iconType: "brain" | "database" | "chart" | "package" | "layers";
   problem: string;
   approach: string;
   results: string;
@@ -21,7 +21,7 @@ export const projects: Project[] = [
     tags: ["Python", "Machine Learning", "Data Science"],
     category: "Data Science",
     year: "2025",
-    emoji: "🎓",
+    iconType: "brain",
     problem:
       "High dropout rates in education institutions often go undetected until it's too late. Early identification of at-risk students can enable timely intervention.",
     approach:
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     tags: ["SQL", "MySQL", "Data Analytics"],
     category: "Data Analytics",
     year: "2025",
-    emoji: "🛒",
+    iconType: "database",
     problem:
       "A retail dataset with thousands of transactions needed structured analysis to reveal sales trends, customer behavior, and product performance.",
     approach:
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     tags: ["Looker Studio", "Data Visualization", "BI"],
     category: "Business Intelligence",
     year: "2025",
-    emoji: "📊",
+    iconType: "chart",
     problem:
       "Business stakeholders needed a clear, interactive way to monitor KPIs and trends without querying raw data themselves.",
     approach:
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     tags: ["Python", "EDA", "Data Visualization"],
     category: "Data Analytics",
     year: "2024",
-    emoji: "📦",
+    iconType: "package",
     problem:
       "A large delivery dataset needed thorough exploration to understand delivery performance, identify delays, and surface geographic patterns.",
     approach:
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     tags: ["System Analysis", "Database", "Information Systems"],
     category: "Information Systems",
     year: "2025",
-    emoji: "🖥️",
+    iconType: "layers",
     problem:
       "Academic coursework covering the full lifecycle of information systems — from requirements analysis to database design and implementation.",
     approach:
