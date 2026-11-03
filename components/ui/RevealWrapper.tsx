@@ -23,8 +23,10 @@ export default function RevealWrapper({
       ([entry]) => {
         if (entry.isIntersecting) {
           el.style.opacity = "1";
-          el.style.transform = "none";
-          observer.unobserve(el);
+          el.style.transform = "translateY(0px)";
+        } else {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(24px)";
         }
       },
       { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }

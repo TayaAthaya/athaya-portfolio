@@ -62,6 +62,15 @@ body {
   to   { transform: rotate(360deg); }
 }
 
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 /* ── Infinite Horizontal Marquee (Kanan ke Kiri) ── */
 @keyframes marquee-scroll {
   0% {
@@ -94,6 +103,10 @@ body {
 
 .animate-spin-slow {
   animation: spin-vinyl 4.5s linear infinite;
+}
+
+.animate-float {
+  animation: float-gentle 4s ease-in-out infinite;
 }
 
 /* Continuous marquee animation class */
