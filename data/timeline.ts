@@ -15,8 +15,8 @@ export const timeline: TimelineItem[] = [
   {
     period: "2026",
     year: 2026,
-    title: "Tanoto TELADAN Scholar & Tech Communities",
-    desc: "Selected as TELADAN Leadership Scholarship Program Awardee 2026 by Tanoto Foundation. Joined Digistar Club by Telkom Indonesia (Project Coordinator & Event Staff), Staff Community Partners TSA Brawijaya, and BCC FILKOM Data Science Intern.",
+    title: "Web Dev Champion, Tanoto TELADAN & Tech Communities",
+    desc: "Awarded 1st Place (Juara 1) in the Web Development Competition at JKB Festival 2026. Selected as TELADAN Leadership Scholarship Program Awardee 2026 by Tanoto Foundation. Joined Digistar Club by Telkom Indonesia (Project Coordinator & Event Staff), Staff Community Partners TSA Brawijaya, and BCC FILKOM Data Science Intern.",
   },
   {
     period: "2025",

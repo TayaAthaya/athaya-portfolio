@@ -1,3 +1,8 @@
+export interface ExperienceCertificate {
+  title: string;
+  url: string;
+}
+
 export interface Experience {
   org: string;
   role: string;
@@ -6,6 +11,7 @@ export interface Experience {
   badge?: string;
   desc: string;
   contributions: string[];
+  certificates?: ExperienceCertificate[];
 }
 
 export const experiences: Experience[] = [
@@ -50,14 +56,26 @@ export const experiences: Experience[] = [
   },
   {
     org: "BEM FILKOM Universitas Brawijaya",
-    role: "Staff of Facilitator Division & Field Speaker",
+    role: "Facilitator Staff, Pemateri & Master of Ceremony",
     period: "May 2026 — Present",
     location: "Malang & Sukabumi",
     badge: "Faculty Leadership",
-    desc: "Serving in key student development and outreach programs organized by the Student Executive Board (BEM) of the Faculty of Computer Science.",
+    desc: "Serving in key student development, advocacy, and outreach programs organized by the Student Executive Board (BEM) of the Faculty of Computer Science.",
     contributions: [
+      "Pemateri (Speaker) for Scholarship On The Go 2026 by Ministry of Student Advocacy & Welfare (Advokesma) BEM FILKOM UB.",
+      "Master of Ceremony for Keynote Speaker & Focus Group Discussion at SCHOTIVAL 2026 ('Pathway To The Sky') by BEM FILKOM UB.",
       "Facilitator Division Staff for PKKMB & Startup Academy FILKOM 2026.",
       "Field Speaker & Volunteer for FILKOM Goes To School (FGTS) 2026 Sukabumi ('Transform with Technology'), conducting on-site roadshows across 3 high schools.",
+    ],
+    certificates: [
+      {
+        title: "Pemateri — Scholarship On The Go 2026",
+        url: "/certificates/scholarship-on-the-go-2026-pemateri.pdf",
+      },
+      {
+        title: "Master of Ceremony — SCHOTIVAL 2026",
+        url: "/certificates/schotival-2026-mc.pdf",
+      },
     ],
   },
   {
