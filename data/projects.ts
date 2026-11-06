@@ -28,7 +28,7 @@ export const projects: Project[] = [
       "Built a classification model using Python and scikit-learn. Performed feature engineering on academic, demographic, and behavioral data. Evaluated multiple models including Random Forest and Gradient Boosting.",
     results:
       "Achieved strong predictive accuracy with interpretable feature importance analysis. Model insights were translated into actionable recommendations for academic advisors.",
-    github: "https://github.com/athayaramdani",
+    github: "https://github.com/TayaAthaya",
     demo: null,
   },
   {
@@ -45,7 +45,7 @@ export const projects: Project[] = [
       "Used MySQL to write complex queries, CTEs, and window functions. Segmented sales by region, time period, and product category. Identified top and bottom performers.",
     results:
       "Delivered a comprehensive analysis report with visualizations. Surfaced key insights on seasonal patterns and underperforming product lines.",
-    github: "https://github.com/athayaramdani",
+    github: "https://github.com/TayaAthaya",
     demo: null,
   },
   {
@@ -62,7 +62,7 @@ export const projects: Project[] = [
       "Designed and built a dashboard in Looker Studio, connecting to structured data sources. Applied BI best practices for layout, color use, and KPI prominence.",
     results:
       "Produced a clean, interactive dashboard enabling non-technical users to independently explore business metrics and trends.",
-    github: "https://github.com/athayaramdani",
+    github: "https://github.com/TayaAthaya",
     demo: null,
   },
   {
@@ -79,24 +79,24 @@ export const projects: Project[] = [
       "Conducted end-to-end EDA using Python (Pandas, Matplotlib, Seaborn). Cleaned and preprocessed the data, then visualized distributions, correlations, and outliers.",
     results:
       "Produced a full EDA notebook with well-documented findings, clear visualizations, and actionable observations on delivery performance.",
-    github: "https://github.com/athayaramdani",
+    github: "https://github.com/TayaAthaya",
     demo: null,
   },
   {
     num: "05",
-    title: "Academic Information Systems Projects",
-    short: "System analysis, database design, and information systems coursework projects.",
-    tags: ["System Analysis", "Database", "Information Systems"],
-    category: "Information Systems",
+    title: "Bank Loan Prediction & Credit Scoring App",
+    short: "A machine learning web application predicting bank loan approval eligibility based on applicant financial and credit profiles.",
+    tags: ["Machine Learning", "Streamlit", "Python", "Scikit-Learn"],
+    category: "Machine Learning",
     year: "2025",
-    iconType: "layers",
+    iconType: "brain",
     problem:
-      "Academic coursework covering the full lifecycle of information systems — from requirements analysis to database design and implementation.",
+      "Financial institutions evaluate thousands of loan applications where manual underwriting is time-consuming and vulnerable to human inconsistency. An automated, data-driven solution was needed to predict credit eligibility quickly while flagging primary risk indicators.",
     approach:
-      "Applied SDLC methodologies, created data flow diagrams, entity-relationship diagrams, and implemented relational database schemas for academic case studies.",
+      "Performed exploratory data analysis (EDA) to understand feature correlations. Handled missing data, executed categorical label encoding, and trained a Random Forest Classifier with Scikit-Learn. Deployed the complete pipeline into an interactive web interface powered by Streamlit Cloud.",
     results:
-      "Completed multiple IS projects demonstrating understanding of system design principles, database normalization, and process modeling.",
-    github: "https://github.com/athayaramdani",
-    demo: null,
+      "Attained 83.19% classification accuracy on test evaluation data. Identified Credit History as the single most critical driver in loan approval outcomes. Successfully delivered an accessible public web application with instant inference.",
+    github: "https://github.com/TayaAthaya/Credit-score-app",
+    demo: "https://credit-score-app-9eufarm5jay3dhy2hboev4.streamlit.app/",
   },
 ];
