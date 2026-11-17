@@ -46,12 +46,24 @@ const ACHIEVEMENTS_LIST: MilestoneItem[] = [
     title: "West Java GenRe Youth Ambassador (Male Innovator 2024)",
     org: "BKKBN West Java Province",
     desc: "Elected Winner of West Java Provincial GenRe Ambassador (Male Innovator Category), representing youth innovation and health advocacy across the province.",
+    certs: [
+      {
+        label: "Winner Certificate — BKKBN Jabar",
+        url: "/certificates/genre-jabar-innovator-2024.jpg",
+      },
+    ],
   },
   {
     icon: Award,
-    title: "Sukabumi Regency GenRe Ambassador",
-    org: "Sukabumi Regency GenRe Forum & DP2KBP3A",
-    desc: "1st Ambassador representing Sukabumi Regency in public health education, youth counseling, and community-driven social campaigns.",
+    title: "Sukabumi Regency GenRe Ambassador (Juara 2 Putra 2023)",
+    org: "Sukabumi Regency GenRe Forum & DPPKB",
+    desc: "Awarded Juara 2 Putra (1st Runner-Up) in the selection of Duta GenRe Kabupaten Sukabumi 2023 by DPPKB, serving as youth counselor and health educator.",
+    certs: [
+      {
+        label: "Juara 2 Certificate — DPPKB",
+        url: "/certificates/genre-sukabumi-2023.jpg",
+      },
+    ],
   },
   {
     icon: Mic,
@@ -91,6 +103,11 @@ const CERTIFICATIONS: CertItem[] = [
   {
     name: "COMPFEST 18 Data Analytics Dash (Google Cloud)",
     url: "/certificates/compfest-18-data-analytics.pdf",
+    highlight: true,
+  },
+  {
+    name: "Top 15 Finalist — STEAM Innovation Festival 2023 (Prestasi Junior Indonesia)",
+    url: "/certificates/steam-infest-2023.jpg",
     highlight: true,
   },
   { name: "Python Introduction for Data Analysis" },

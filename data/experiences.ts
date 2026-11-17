@@ -121,40 +121,66 @@ export const experiences: Experience[] = [
       "Conducted youth advocacy, stunting prevention campaigns, and life planning education across West Java.",
       "Collaborated with local governments and youth communities to design impactful social programs.",
     ],
+    certificates: [
+      {
+        title: "Duta GenRe Inovator Putra Jawa Barat 2024",
+        url: "/certificates/genre-jabar-innovator-2024.jpg",
+      },
+    ],
   },
   {
     org: "Sukabumi Regency GenRe Forum",
-    role: "Sukabumi Regency GenRe Ambassador",
+    role: "Sukabumi Regency GenRe Ambassador (Juara 2 Putra 2023)",
     period: "Sep 2023 — Apr 2025",
     location: "Sukabumi, West Java",
     badge: "Regency Ambassador",
     desc: "Led district-level youth education, public speaking roadshows, and peer counseling on family planning and adolescent development.",
     contributions: [
+      "Awarded Juara 2 Putra (1st Runner-Up) in the selection of Duta GenRe Kabupaten Sukabumi 2023 by DPPKB.",
       "Delivered public talks and mentoring sessions to hundreds of youth.",
-      "Represented Sukabumi Regency in provincial-level forums and competitions.",
+      "Represented Sukabumi Regency in provincial-level forums and social campaigns.",
+    ],
+    certificates: [
+      {
+        title: "Juara 2 Putra — Duta GenRe Kabupaten Sukabumi 2023",
+        url: "/certificates/genre-sukabumi-2023.jpg",
+      },
     ],
   },
   {
     org: "Filantroops",
     role: "Event Staff",
-    period: "Jun 2025 — Aug 2025",
+    period: "Jun 2025 — Sep 2025",
     location: "Indonesia",
     badge: "Social Impact",
     desc: "Contributed to event logistics, cross-functional team coordination, and project management for social impact initiatives.",
     contributions: [
-      "Handled operational coordination and stakeholder communications.",
-      "Earned E-Certificate of Appreciation for exemplary staff contributions.",
+      "Handled operational coordination, stage management, and stakeholder communications.",
+      "Earned official Certificate of Appreciation as Event Staff (September 2025).",
+    ],
+    certificates: [
+      {
+        title: "Event Staff Certificate — Filantroops 2025",
+        url: "/certificates/filantroops-event-staff-2025.jpg",
+      },
     ],
   },
   {
     org: "OSIS SMAN 1 Cicurug",
     role: "Secretary of Student Leadership & Civic Affairs",
-    period: "Sep 2022 — Aug 2023",
+    period: "Sep 2022 — Nov 2023",
     location: "Sukabumi, West Java",
     badge: "High School Leadership",
     desc: "Managed student council administrative workflows, school events, and civic leadership programs at SMAN 1 Cicurug.",
     contributions: [
+      "Top 15 Finalist in STEAM Innovation Festival 2023 representing SMAN 1 Cicurug, organized by Prestasi Junior Indonesia (JA Worldwide).",
       "Organized school-wide events and fostered student discipline & character building.",
+    ],
+    certificates: [
+      {
+        title: "Top 15 Finalist — STEAM Innovation Festival 2023",
+        url: "/certificates/steam-infest-2023.jpg",
+      },
     ],
   },
 ];

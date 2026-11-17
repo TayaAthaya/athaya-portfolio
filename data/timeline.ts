@@ -28,13 +28,13 @@ export const timeline: TimelineItem[] = [
     period: "2024 — 2025",
     year: 2024,
     title: "Duta GenRe Inovator Jawa Barat & Social Impact",
-    desc: "Won Winner of West Java Provincial GenRe Ambassador (Male Innovator Category) under BKKBN Jawa Barat. Event Staff at Filantroops and public speaker at multiple youth seminars.",
+    desc: "Winner of West Java Provincial GenRe Ambassador (Male Innovator Category) by BKKBN Jawa Barat. Event Staff at Filantroops (September 2025) and public speaker across youth seminars.",
   },
   {
     period: "2023 — 2024",
     year: 2023,
-    title: "Duta GenRe Sukabumi & Youth Advocacy",
-    desc: "Elected as Duta GenRe Kabupaten Sukabumi. Stepped onto large stages to educate young generations on adolescent health, leadership, and social development.",
+    title: "Duta GenRe Sukabumi & STEAM Innovation Finalist",
+    desc: "Awarded Juara 2 Putra Duta GenRe Kabupaten Sukabumi 2023. Selected as Top 15 Finalist in STEAM Innovation Festival 2023 by Prestasi Junior Indonesia (JA Worldwide). Stepped onto large stages for adolescent health and technology advocacy.",
   },
   {
     period: "2022 — 2023",
