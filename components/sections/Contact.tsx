@@ -29,7 +29,7 @@ const SOCIALS = [
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/thayaarmdni/",
+    href: "https://www.instagram.com/athayaarmdni/",
     icon: (
       <svg className="w-4 h-4 stroke-current fill-none stroke-[1.75]" viewBox="0 0 24 24">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
