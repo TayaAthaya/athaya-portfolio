@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
 const scrollTo = (id: string) =>
@@ -49,11 +48,10 @@ export default function Hero() {
   const refName = useRef<HTMLDivElement>(null);
   const refParagraph = useRef<HTMLDivElement>(null);
   const refButtons = useRef<HTMLDivElement>(null);
-  const refMascot = useRef<HTMLDivElement>(null);
 
   useHeroReveal(
-    [refBadge, refName, refParagraph, refButtons, refMascot],
-    [0, 100, 200, 300, 150]
+    [refBadge, refName, refParagraph, refButtons],
+    [0, 100, 200, 300]
   );
 
   return (
@@ -65,9 +63,9 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_60%_at_70%_40%,rgba(99,102,241,0.08)_0%,transparent_70%)]" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-20 lg:py-24 w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
-          {/* Left Column: Text & Actions */}
-          <div className="w-full lg:max-w-[640px] xl:max-w-[700px]">
+        <div className="flex flex-col items-start">
+          {/* Text & Actions */}
+          <div className="w-full lg:max-w-[760px]">
             <div ref={refBadge} className="flex items-center gap-3 mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
               <span className="text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-zinc-500">
@@ -116,29 +114,6 @@ export default function Hero() {
               >
                 About Me
               </button>
-            </div>
-          </div>
-
-          {/* Right Column: NAVI Mascot */}
-          <div
-            ref={refMascot}
-            className="w-full lg:w-auto flex justify-center lg:justify-end shrink-0"
-          >
-            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[420px] lg:h-[420px] xl:w-[460px] xl:h-[460px] select-none pointer-events-none">
-              {/* Ambient radial glow matching website theme & NAVI's palette */}
-              <div className="absolute inset-0 -z-10 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.18)_0%,rgba(168,85,247,0.14)_45%,transparent_70%)] blur-3xl scale-125" />
-
-              {/* Gentle floating mascot */}
-              <div className="relative w-full h-full animate-float">
-                <Image
-                  src="/navi.png"
-                  alt="NAVI Mascot - Athaya Akbar Ramdani"
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 320px, 460px"
-                  className="object-contain drop-shadow-[0_0_35px_rgba(59,130,246,0.22)]"
-                />
-              </div>
             </div>
           </div>
         </div>

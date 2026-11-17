@@ -61,9 +61,16 @@ export default function Work() {
                 </div>
 
                 <div>
-                  <p className="text-[1.05rem] md:text-[1.1rem] font-semibold tracking-tight text-white mb-2 group-hover:text-indigo-200 transition-colors">
-                    {p.title}
-                  </p>
+                  <div className="flex items-center gap-2 mb-2">
+                    <p className="text-[1.05rem] md:text-[1.1rem] font-semibold tracking-tight text-white group-hover:text-indigo-200 transition-colors">
+                      {p.title}
+                    </p>
+                    {p.status === "in-development" && (
+                      <span className="text-[0.6rem] font-semibold tracking-[0.1em] uppercase px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 leading-none">
+                        In Development
+                      </span>
+                    )}
+                  </div>
                   <div className="flex gap-2 flex-wrap">
                     {p.tags.map((t) => (
                       <Tag key={t}>{t}</Tag>

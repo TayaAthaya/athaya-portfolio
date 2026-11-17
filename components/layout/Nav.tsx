@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const NAV_LINKS = [
   { label: "About", href: "about" },
@@ -84,6 +85,15 @@ export default function Nav() {
                 </button>
               </li>
             ))}
+            <li>
+              <Link
+                href="/"
+                className="text-xs font-medium text-zinc-600 hover:text-zinc-400 transition-colors tracking-wide"
+                title="Back to main page"
+              >
+                ← Home
+              </Link>
+            </li>
           </ul>
 
           <button
@@ -120,6 +130,13 @@ export default function Nav() {
             {label}
           </button>
         ))}
+        <Link
+          href="/"
+          onClick={() => setMenuOpen(false)}
+          className="text-xl font-medium text-zinc-500 hover:text-zinc-300 transition-colors"
+        >
+          ← Back to Home
+        </Link>
       </div>
     </>
   );

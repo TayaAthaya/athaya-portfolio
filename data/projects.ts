@@ -11,6 +11,7 @@ export interface Project {
   results: string;
   github: string;
   demo: string | null;
+  status?: "active" | "in-development";
 }
 
 export const projects: Project[] = [
@@ -98,5 +99,39 @@ export const projects: Project[] = [
       "Attained 83.19% classification accuracy on test evaluation data. Identified Credit History as the single most critical driver in loan approval outcomes. Successfully delivered an accessible public web application with instant inference.",
     github: "https://github.com/TayaAthaya/Credit-score-app",
     demo: "https://credit-score-app-9eufarm5jay3dhy2hboev4.streamlit.app/",
+  },
+  {
+    num: "06",
+    title: "NafasKita",
+    short: "A digital health platform focused on respiratory wellness and breathing-related awareness.",
+    tags: ["Health Tech", "Web App"],
+    category: "In Development",
+    year: "2026",
+    iconType: "layers",
+    problem:
+      "Respiratory health awareness and accessible breathing wellness tools are underrepresented in Indonesian digital health spaces.",
+    approach:
+      "Designing a user-centered platform to deliver respiratory health information and interactive tools. Currently in early development.",
+    results: "Project in development. Details will be shared upon completion.",
+    github: "https://github.com/TayaAthaya",
+    demo: null,
+    status: "in-development",
+  },
+  {
+    num: "07",
+    title: "REsource",
+    short: "A resource aggregation and management platform for students and academic communities.",
+    tags: ["Productivity", "Web App"],
+    category: "In Development",
+    year: "2026",
+    iconType: "database",
+    problem:
+      "Students often struggle to find, organize, and share academic resources effectively across platforms.",
+    approach:
+      "Building a centralized resource hub with organized categorization and community contribution features. Currently in early development.",
+    results: "Project in development. Details will be shared upon completion.",
+    github: "https://github.com/TayaAthaya",
+    demo: null,
+    status: "in-development",
   },
 ];

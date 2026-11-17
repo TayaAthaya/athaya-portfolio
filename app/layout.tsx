@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/layout/Nav";
-import Footer from "@/components/layout/Footer";
 import GalaxyBackground from "@/components/ui/GalaxyBackground";
 
 const inter = Inter({
@@ -12,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Athaya Akbar Ramdani — Information Systems · Data · Technology",
+  title: "Athaya Akbar Ramdani",
   description:
-    "Personal portfolio of Athaya Akbar Ramdani — Information Systems student at Universitas Brawijaya exploring Data Analytics, Business Intelligence, and Technology.",
+    "A journey of learning, building, and becoming. Explore the professional and personal world of Athaya Akbar Ramdani.",
   keywords: [
     "Athaya Akbar Ramdani",
     "Information Systems",
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Athaya Akbar Ramdani" }],
   openGraph: {
     title: "Athaya Akbar Ramdani",
-    description: "Information Systems student building with data, technology, and curiosity.",
+    description: "A journey of learning, building, and becoming.",
     type: "website",
   },
 };
@@ -39,12 +37,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-[#090909] text-white antialiased overflow-x-hidden relative min-h-screen">
-        {/* Global animated galaxy stars & grid background */}
         <GalaxyBackground />
-
-        <Nav />
         <main className="relative z-10">{children}</main>
-        <Footer />
       </body>
     </html>
   );
