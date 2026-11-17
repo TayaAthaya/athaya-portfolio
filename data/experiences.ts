@@ -92,14 +92,21 @@ export const experiences: Experience[] = [
   },
   {
     org: "KBMDSI FILKOM Universitas Brawijaya",
-    role: "Vice Head of Sponsorship & Junior PR Staff",
-    period: "Oct 2025 — Aug 2026",
+    role: "Master of Ceremony, Vice Head of Sponsorship & Junior PR Staff",
+    period: "Oct 2025 — Oct 2026",
     location: "Malang, East Java",
     badge: "Departmental",
-    desc: "Active contributor across public relations and commercial partnership arms of the Information Systems Student Department (KBMDSI).",
+    desc: "Active contributor across event hosting, public relations, and commercial partnership arms of the Information Systems Student Department (KBMDSI).",
     contributions: [
+      "Master of Ceremony for Synergy of Symphony (SOS 2026) — Department Orientation for new Information Systems students under the theme 'Aether of Synergy: Constructing Character, Igniting Potential' across 2 major event sessions.",
       "Vice Head of Sponsorship and Fundraising Division — IT Fest KBMDSI 2026.",
       "Junior Public Relations Staff (Medkominfo) Navakara Cabinet: managed social media publications, public engagement, and organizational communication.",
+    ],
+    certificates: [
+      {
+        title: "Master of Ceremony — Synergy of Symphony 2026",
+        url: "/certificates/synergy-of-symphony-mc-2026.pdf",
+      },
     ],
   },
   {

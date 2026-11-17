@@ -56,16 +56,20 @@ const ACHIEVEMENTS_LIST: MilestoneItem[] = [
   {
     icon: Mic,
     title: "Keynote Speaker & Master of Ceremony",
-    org: "BEM FILKOM UB & TSA Brawijaya",
-    desc: "Certified Pemateri for Scholarship On The Go 2026, Master of Ceremony for SCHOTIVAL 2026, field speaker for FGTS Sukabumi, and hosted TSA SDGs #3.",
+    org: "KBMDSI, BEM FILKOM UB & TSA Brawijaya",
+    desc: "Official Master of Ceremony for Synergy of Symphony (Information Systems Department Orientation 2026) and SCHOTIVAL 2026. Certified Pemateri for Scholarship On The Go 2026, and field speaker for FGTS Sukabumi & TSA SDGs #3.",
     certs: [
       {
-        label: "Speaker — SOTG 2026",
-        url: "/certificates/scholarship-on-the-go-2026-pemateri.pdf",
+        label: "MC — SOS KBMDSI 2026",
+        url: "/certificates/synergy-of-symphony-mc-2026.pdf",
       },
       {
         label: "MC — SCHOTIVAL 2026",
         url: "/certificates/schotival-2026-mc.pdf",
+      },
+      {
+        label: "Speaker — SOTG 2026",
+        url: "/certificates/scholarship-on-the-go-2026-pemateri.pdf",
       },
     ],
   },
