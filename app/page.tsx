@@ -8,13 +8,11 @@ import { ArrowRight, Mail, ArrowUpRight } from "lucide-react";
 const CONTACT_LINKS = [
   {
     label: "Email",
-    value: "athayaramdani495@gmail.com",
     href: "mailto:athayaramdani495@gmail.com",
     icon: <Mail className="w-4 h-4 stroke-[1.75]" />,
   },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/athaya-akbar-ramdani",
     href: "https://linkedin.com/in/athaya-akbar-ramdani",
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -24,7 +22,6 @@ const CONTACT_LINKS = [
   },
   {
     label: "GitHub",
-    value: "github.com/TayaAthaya",
     href: "https://github.com/TayaAthaya",
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -34,7 +31,6 @@ const CONTACT_LINKS = [
   },
   {
     label: "Instagram",
-    value: "@athayaarmdni",
     href: "https://www.instagram.com/athayaarmdni/",
     icon: (
       <svg className="w-4 h-4 stroke-current fill-none stroke-[1.75]" viewBox="0 0 24 24">
@@ -159,13 +155,13 @@ export default function LandingPage() {
             Let's connect.
           </SplitTextTitle>
 
-          <p className="text-zinc-400 text-sm sm:text-base leading-[1.75] mb-10 max-w-md mx-auto">
+          <p className="text-zinc-400 text-sm sm:text-base leading-[1.75] mb-12 max-w-md mx-auto">
             Whether it&#39;s a collaboration, an opportunity, or just a conversation — feel free to reach out.
           </p>
 
-          {/* Contact Links with Motion enter & hover */}
-          <div className="flex flex-col gap-3 max-w-md mx-auto">
-            {CONTACT_LINKS.map(({ label, value, href, icon }, i) => (
+          {/* Minimalist Centered Social Links: Title and Icon Only */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto">
+            {CONTACT_LINKS.map(({ label, href, icon }, i) => (
               <motion.a
                 key={label}
                 href={href}
@@ -175,24 +171,17 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.45, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -3, scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                className="group flex items-center justify-between gap-4 px-5 py-4 rounded-xl bg-[#141417] border border-white/[0.06] hover:bg-[#1a1a1f] hover:border-indigo-500/30 transition-all duration-200"
+                whileHover={{ y: -3, scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#141417] border border-white/[0.07] hover:border-indigo-500/30 hover:bg-[#1a1a1f] transition-all duration-200"
               >
-                <div className="flex items-center gap-3.5">
-                  <span className="text-zinc-400 group-hover:text-indigo-400 transition-colors">
-                    {icon}
-                  </span>
-                  <div className="text-left">
-                    <div className="text-[0.65rem] font-semibold tracking-[0.1em] uppercase text-zinc-500 mb-0.5">
-                      {label}
-                    </div>
-                    <div className="text-sm text-zinc-300 group-hover:text-white transition-colors">
-                      {value}
-                    </div>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-zinc-600 group-hover:text-indigo-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 shrink-0" />
+                <span className="text-zinc-400 group-hover:text-indigo-400 transition-colors flex items-center">
+                  {icon}
+                </span>
+                <span className="text-sm font-medium text-zinc-200 group-hover:text-white transition-colors">
+                  {label}
+                </span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600 group-hover:text-indigo-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
               </motion.a>
             ))}
           </div>
