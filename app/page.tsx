@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "motion/react";
+import SplitTextTitle from "@/components/ui/SplitTextTitle";
 import { ArrowRight, Mail, ArrowUpRight } from "lucide-react";
 
 const CONTACT_LINKS = [
@@ -54,59 +56,87 @@ export default function LandingPage() {
       <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-6 pt-24 pb-20 text-center select-none">
         <div className="relative z-10 flex flex-col items-center w-full max-w-3xl mx-auto">
           {/* Wordmark */}
-          <span className="text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-zinc-500 mb-10">
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-zinc-500 mb-10"
+          >
             Athaya
-          </span>
+          </motion.span>
 
-          {/* Greeting */}
-          <h1
-            className="font-bold tracking-[-0.04em] leading-[1.0] text-white mb-6"
+          {/* Greeting with SplitText */}
+          <SplitTextTitle
+            as="h1"
+            className="font-bold tracking-[-0.04em] leading-[1.0] text-white mb-6 select-none"
             style={{ fontSize: "clamp(2.8rem, 7vw, 6.2rem)" }}
           >
-            Hello, I&#39;m Athaya<br />
-            <span className="text-zinc-500">Akbar Ramdani.</span>
-          </h1>
+            Hello, I'm Athaya Akbar Ramdani.
+          </SplitTextTitle>
 
           {/* Tagline */}
-          <p className="text-zinc-400 text-base sm:text-lg leading-[1.75] mb-14 max-w-md">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="text-zinc-400 text-base sm:text-lg leading-[1.75] mb-14 max-w-md"
+          >
             A journey of learning, building, and becoming.
-          </p>
+          </motion.p>
 
-          {/* Two Experience Choices */}
+          {/* Two Experience Choices with Motion Cards & Hover */}
           <div className="flex flex-col sm:flex-row gap-5 w-full justify-center max-w-xl">
             {/* Professional */}
-            <Link
-              href="/professional"
-              className="group relative flex flex-col items-start gap-2 p-6 sm:p-7 rounded-2xl bg-[#141417]/80 border border-white/[0.08] hover:border-indigo-500/40 hover:bg-[#1a1a1f] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(99,102,241,0.15)] transition-all duration-300 text-left flex-1"
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex-1"
             >
-              <div className="flex items-center justify-between w-full">
-                <span className="text-[0.7rem] font-bold tracking-[0.14em] uppercase text-indigo-400">
-                  Professional
+              <Link
+                href="/professional"
+                className="group relative flex flex-col items-start gap-2 p-6 sm:p-7 rounded-2xl bg-[#141417]/90 border border-white/[0.08] hover:border-indigo-500/40 hover:bg-[#1a1a1f] hover:shadow-[0_12px_32px_rgba(99,102,241,0.15)] transition-all duration-300 text-left h-full"
+              >
+                <div className="flex items-center justify-between w-full">
+                  <span className="text-[0.7rem] font-bold tracking-[0.14em] uppercase text-indigo-400">
+                    Professional
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-indigo-400 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" />
+                </div>
+                <span className="text-base text-zinc-100 font-semibold mt-1">What I do</span>
+                <span className="text-xs text-zinc-400 leading-relaxed">
+                  Skills, projects, experience, and verified achievements.
                 </span>
-                <ArrowRight className="w-4 h-4 text-indigo-400 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" />
-              </div>
-              <span className="text-base text-zinc-100 font-semibold mt-1">What I do</span>
-              <span className="text-xs text-zinc-400 leading-relaxed">
-                Skills, projects, experience, and verified achievements.
-              </span>
-            </Link>
+              </Link>
+            </motion.div>
 
             {/* Personal */}
-            <Link
-              href="/personal"
-              className="group relative flex flex-col items-start gap-2 p-6 sm:p-7 rounded-2xl bg-[#141417]/40 border border-white/[0.05] hover:border-white/[0.15] hover:bg-[#1a1a1f]/80 hover:-translate-y-1 transition-all duration-300 text-left flex-1"
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex-1"
             >
-              <div className="flex items-center justify-between w-full">
-                <span className="text-[0.7rem] font-bold tracking-[0.14em] uppercase text-zinc-500 group-hover:text-zinc-400 transition-colors">
-                  Personal
+              <Link
+                href="/personal"
+                className="group relative flex flex-col items-start gap-2 p-6 sm:p-7 rounded-2xl bg-[#141417]/50 border border-white/[0.05] hover:border-white/[0.15] hover:bg-[#1a1a1f]/80 transition-all duration-300 text-left h-full"
+              >
+                <div className="flex items-center justify-between w-full">
+                  <span className="text-[0.7rem] font-bold tracking-[0.14em] uppercase text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                    Personal
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-zinc-600 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" />
+                </div>
+                <span className="text-base text-zinc-300 font-semibold mt-1">Who I am</span>
+                <span className="text-xs text-zinc-500 leading-relaxed">
+                  Stories, reflections, leadership notes, and personal growth.
                 </span>
-                <ArrowRight className="w-4 h-4 text-zinc-600 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" />
-              </div>
-              <span className="text-base text-zinc-300 font-semibold mt-1">Who I am</span>
-              <span className="text-xs text-zinc-500 leading-relaxed">
-                Stories, reflections, leadership notes, and personal growth.
-              </span>
-            </Link>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -122,26 +152,32 @@ export default function LandingPage() {
             Get in touch
           </span>
 
-          <h2
+          <SplitTextTitle
             className="font-bold tracking-[-0.03em] text-white mb-4"
             style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
           >
-            Let&#39;s connect.
-          </h2>
+            Let's connect.
+          </SplitTextTitle>
 
           <p className="text-zinc-400 text-sm sm:text-base leading-[1.75] mb-10 max-w-md mx-auto">
             Whether it&#39;s a collaboration, an opportunity, or just a conversation — feel free to reach out.
           </p>
 
-          {/* Contact Links */}
+          {/* Contact Links with Motion enter & hover */}
           <div className="flex flex-col gap-3 max-w-md mx-auto">
-            {CONTACT_LINKS.map(({ label, value, href, icon }) => (
-              <a
+            {CONTACT_LINKS.map(({ label, value, href, icon }, i) => (
+              <motion.a
                 key={label}
                 href={href}
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between gap-4 px-5 py-4 rounded-xl bg-[#141417] border border-white/[0.06] hover:bg-[#1a1a1f] hover:border-indigo-500/30 hover:-translate-y-0.5 transition-all duration-200"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.45, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -3, scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="group flex items-center justify-between gap-4 px-5 py-4 rounded-xl bg-[#141417] border border-white/[0.06] hover:bg-[#1a1a1f] hover:border-indigo-500/30 transition-all duration-200"
               >
                 <div className="flex items-center gap-3.5">
                   <span className="text-zinc-400 group-hover:text-indigo-400 transition-colors">
@@ -157,7 +193,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <ArrowUpRight className="w-4 h-4 text-zinc-600 group-hover:text-indigo-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 shrink-0" />
-              </a>
+              </motion.a>
             ))}
           </div>
         </div>

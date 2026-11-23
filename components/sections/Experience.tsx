@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import { experiences } from "@/data/experiences";
 import SectionLabel from "@/components/ui/SectionLabel";
-import RevealWrapper from "@/components/ui/RevealWrapper";
+import SplitTextTitle from "@/components/ui/SplitTextTitle";
 import { Sparkles, MapPin, X, Calendar, FileCheck2, ExternalLink } from "lucide-react";
 import type { Experience as ExperienceType } from "@/data/experiences";
 
@@ -11,10 +12,12 @@ export default function Experience() {
   const [selectedExp, setSelectedExp] = useState<ExperienceType | null>(null);
 
   const renderCard = (exp: ExperienceType, keyPrefix: string, index: number) => (
-    <div
+    <motion.div
       key={`${keyPrefix}-${exp.org}-${index}`}
       onClick={() => setSelectedExp(exp)}
-      className="w-[320px] sm:w-[360px] md:w-[400px] shrink-0 p-7 md:p-8 rounded-[24px] border border-white/[0.08] bg-[#141417] hover:border-indigo-500/40 hover:bg-[#19191e] hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-xl select-none"
+      whileHover={{ y: -6, borderColor: "rgba(99, 102, 241, 0.45)", backgroundColor: "#19191e" }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className="w-[320px] sm:w-[360px] md:w-[400px] shrink-0 p-7 md:p-8 rounded-[24px] border border-white/[0.08] bg-[#141417] cursor-pointer flex flex-col justify-between shadow-xl select-none"
     >
       <div>
         <div className="flex items-center justify-between gap-2 mb-4">
@@ -59,7 +62,7 @@ export default function Experience() {
           View Details →
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 
   return (
@@ -67,19 +70,17 @@ export default function Experience() {
       <div className="max-w-[1200px] mx-auto px-6 mb-12">
         <SectionLabel>Experience &amp; Organizations</SectionLabel>
 
-        <RevealWrapper>
-          <div>
-            <h2
-              className="font-semibold tracking-tight text-white mb-2 select-none"
-              style={{ fontSize: "clamp(1.75rem, 3.5vw, 3rem)" }}
-            >
-              Things I&apos;ve been part of.
-            </h2>
-            <p className="text-zinc-400 text-sm max-w-[620px]">
-              Technology committees, leadership initiatives, and communities that have shaped my journey. Hover over any card to pause, click to view key contributions.
-            </p>
-          </div>
-        </RevealWrapper>
+        <div>
+          <SplitTextTitle
+            className="font-semibold tracking-tight text-white mb-2 select-none"
+            style={{ fontSize: "clamp(1.75rem, 3.5vw, 3rem)" }}
+          >
+            Things I&apos;ve been part of.
+          </SplitTextTitle>
+          <p className="text-zinc-400 text-sm max-w-[620px]">
+            Technology committees, leadership initiatives, and communities that have shaped my journey. Hover over any card to pause, click to view key contributions.
+          </p>
+        </div>
       </div>
 
       {/* ── CONTINUOUS INFINITE RUNNING CAROUSEL (KANAN KE KIRI) ── */}

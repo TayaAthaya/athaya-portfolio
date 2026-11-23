@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import GalaxyBackground from "@/components/ui/GalaxyBackground";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,8 +38,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-[#090909] text-white antialiased overflow-x-hidden relative min-h-screen">
-        <GalaxyBackground />
-        <main className="relative z-10">{children}</main>
+        <SmoothScrollProvider>
+          <GalaxyBackground />
+          <main className="relative z-10">{children}</main>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { timeline } from "@/data/timeline";
 import SectionLabel from "@/components/ui/SectionLabel";
+import SplitTextTitle from "@/components/ui/SplitTextTitle";
 import RevealWrapper from "@/components/ui/RevealWrapper";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
@@ -21,14 +23,12 @@ export default function Journey() {
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel>Journey &amp; Evolution</SectionLabel>
 
-        <RevealWrapper>
-          <h2
-            className="font-semibold tracking-tight text-white mb-3 select-none"
-            style={{ fontSize: "clamp(1.75rem, 3.5vw, 3rem)" }}
-          >
-            Still becoming.
-          </h2>
-        </RevealWrapper>
+        <SplitTextTitle
+          className="font-semibold tracking-tight text-white mb-3 select-none"
+          style={{ fontSize: "clamp(1.75rem, 3.5vw, 3rem)" }}
+        >
+          Still becoming.
+        </SplitTextTitle>
 
         <RevealWrapper delay={100}>
           <p className="text-zinc-400 leading-[1.75] mb-12 max-w-[520px]">
@@ -82,16 +82,21 @@ export default function Journey() {
                       {item.title}
                     </p>
 
-                    <div
-                      className={`overflow-hidden transition-all duration-400 ease-out ${
-                        isActive ? "max-h-[220px] opacity-100" : "max-h-0 opacity-0"
-                      }`}
-                      style={{ transitionProperty: "max-height, opacity" }}
-                    >
-                      <p className="text-sm text-zinc-400 leading-[1.75] pt-1">
-                        {item.desc}
-                      </p>
-                    </div>
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-sm text-zinc-400 leading-[1.75] pt-1">
+                            {item.desc}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </button>
               );

@@ -1,4 +1,8 @@
+"use client";
+
+import { motion } from "motion/react";
 import SectionLabel from "@/components/ui/SectionLabel";
+import SplitTextTitle from "@/components/ui/SplitTextTitle";
 import RevealWrapper from "@/components/ui/RevealWrapper";
 import Link from "next/link";
 import { Mail, ArrowUpRight } from "lucide-react";
@@ -47,16 +51,12 @@ export default function Contact() {
         <div className="flex flex-col items-center text-center">
           <SectionLabel className="justify-center">Contact</SectionLabel>
 
-          <RevealWrapper>
-            <h2
-              className="font-bold tracking-tight text-white mb-6 select-none"
-              style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)", lineHeight: "1.05", letterSpacing: "-0.04em" }}
-            >
-              Let&apos;s build something
-              <br />
-              <span className="text-indigo-400">meaningful.</span>
-            </h2>
-          </RevealWrapper>
+          <SplitTextTitle
+            className="font-bold tracking-tight text-white mb-6 select-none"
+            style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)", lineHeight: "1.05", letterSpacing: "-0.04em" }}
+          >
+            Let&apos;s build something meaningful.
+          </SplitTextTitle>
 
           <RevealWrapper delay={100}>
             <p className="max-w-[500px] text-zinc-400 leading-[1.7] mb-12">
@@ -65,15 +65,22 @@ export default function Contact() {
             </p>
           </RevealWrapper>
 
-          <RevealWrapper delay={200}>
-            <div className="flex gap-4 flex-wrap justify-center">
-              {SOCIALS.map(({ label, href, icon }) => (
+          <div className="flex gap-4 flex-wrap justify-center">
+            {SOCIALS.map(({ label, href, icon }, i) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.45, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 <Link
-                  key={label}
                   href={href}
                   target={href.startsWith("mailto") ? undefined : "_blank"}
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl border border-white/[0.07] bg-[#141417] text-sm font-medium text-zinc-300 hover:border-indigo-500/30 hover:bg-[#1a1a1f] hover:text-white hover:-translate-y-0.5 transition-all group"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl border border-white/[0.07] bg-[#141417] text-sm font-medium text-zinc-300 hover:border-indigo-500/30 hover:bg-[#1a1a1f] hover:text-white transition-all group"
                 >
                   <span className="text-zinc-400 group-hover:text-indigo-400 transition-colors flex items-center">
                     {icon}
@@ -81,9 +88,9 @@ export default function Contact() {
                   <span>{label}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600 group-hover:text-zinc-400 transition-colors" />
                 </Link>
-              ))}
-            </div>
-          </RevealWrapper>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

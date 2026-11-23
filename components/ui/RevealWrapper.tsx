@@ -1,51 +1,57 @@
 "use client";
 
 import { useEffect, useRef, ReactNode } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface RevealWrapperProps {
   children: ReactNode;
   delay?: number;
   className?: string;
+  y?: number;
 }
 
 export default function RevealWrapper({
   children,
   delay = 0,
   className = "",
+  y = 30,
 }: RevealWrapperProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const el = ref.current;
     if (!el) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.style.opacity = "1";
-          el.style.transform = "translateY(0px)";
-        } else {
-          el.style.opacity = "0";
-          el.style.transform = "translateY(24px)";
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          y: y,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          delay: delay / 1000,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+            once: true,
+          },
         }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
-    );
+      );
+    }, ref);
 
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    return () => ctx.revert();
+  }, [delay, y]);
 
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: 0,
-        transform: "translateY(24px)",
-        transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
-      }}
-    >
+    <div ref={ref} className={className} style={{ opacity: 0 }}>
       {children}
     </div>
   );

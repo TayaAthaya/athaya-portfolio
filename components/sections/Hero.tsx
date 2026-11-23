@@ -1,61 +1,54 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
+import gsap from "gsap";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
 const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-function useHeroReveal(
-  refs: React.RefObject<HTMLElement | null>[],
-  delays: number[]
-) {
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    refs.forEach((ref, i) => {
-      const el = ref.current;
-      if (!el) return;
-
-      el.style.opacity = "0";
-      el.style.transform = "translateY(24px)";
-      el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delays[i]}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delays[i]}ms`;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0px)";
-          } else {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(24px)";
-          }
-        },
-        { threshold: 0.1 }
-      );
-
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-}
-
 export default function Hero() {
-  const refBadge = useRef<HTMLDivElement>(null);
-  const refName = useRef<HTMLDivElement>(null);
-  const refParagraph = useRef<HTMLDivElement>(null);
-  const refButtons = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  useHeroReveal(
-    [refBadge, refName, refParagraph, refButtons],
-    [0, 100, 200, 300]
-  );
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.fromTo(
+        ".hero-badge",
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.7 }
+      )
+        .fromTo(
+          ".hero-title-word",
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.12 },
+          "-=0.4"
+        )
+        .fromTo(
+          ".hero-desc",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          "-=0.4"
+        )
+        .fromTo(
+          ".hero-btn",
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 },
+          "-=0.4"
+        );
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
+      ref={heroRef}
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden pt-16 select-none"
     >
@@ -66,23 +59,27 @@ export default function Hero() {
         <div className="flex flex-col items-start">
           {/* Text & Actions */}
           <div className="w-full lg:max-w-[760px]">
-            <div ref={refBadge} className="flex items-center gap-3 mb-8">
+            <div className="hero-badge flex items-center gap-3 mb-8" style={{ opacity: 0 }}>
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
               <span className="text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-zinc-500">
                 Information Systems · Universitas Brawijaya
               </span>
             </div>
 
-            <div ref={refName} className="mb-8">
+            <div className="mb-8">
               <h1
                 className="font-bold tracking-[-0.04em] leading-[0.95]"
                 style={{ fontSize: "clamp(3rem, 8vw, 7.5rem)" }}
               >
-                <span className="block text-white">Athaya</span>
-                <span className="block text-white">Akbar</span>
+                <span className="hero-title-word block text-white" style={{ opacity: 0 }}>
+                  Athaya
+                </span>
+                <span className="hero-title-word block text-white" style={{ opacity: 0 }}>
+                  Akbar
+                </span>
                 <span
-                  className="block text-zinc-500"
-                  style={{ paddingLeft: "clamp(1rem, 5vw, 5rem)" }}
+                  className="hero-title-word block text-zinc-500"
+                  style={{ paddingLeft: "clamp(1rem, 5vw, 5rem)", opacity: 0 }}
                 >
                   Ramdani
                 </span>
@@ -90,30 +87,35 @@ export default function Hero() {
             </div>
 
             <div
-              ref={refParagraph}
-              className="max-w-[540px] mb-12 text-zinc-400 leading-[1.7]"
-              style={{ fontSize: "clamp(1rem, 1.5vw, 1.15rem)" }}
+              className="hero-desc max-w-[540px] mb-12 text-zinc-400 leading-[1.7]"
+              style={{ fontSize: "clamp(1rem, 1.5vw, 1.15rem)", opacity: 0 }}
             >
               Information Systems student building with data, technology, and
               curiosity. Exploring Data Analytics, Business Intelligence, and the
               space between ideas and execution.
             </div>
 
-            <div ref={refButtons} className="flex gap-4 flex-wrap">
-              <button
+            <div className="flex gap-4 flex-wrap">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => scrollTo("work")}
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-400 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(99,102,241,0.25)] transition-all cursor-pointer group"
+                className="hero-btn inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-400 hover:shadow-[0_8px_24px_rgba(99,102,241,0.25)] transition-all cursor-pointer group"
+                style={{ opacity: 0 }}
               >
                 View My Work
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => scrollTo("about")}
-                className="inline-flex items-center gap-2 px-7 py-[13px] rounded-lg border border-white/[0.07] text-white text-sm font-semibold bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/[0.14] hover:-translate-y-px transition-all cursor-pointer"
+                className="hero-btn inline-flex items-center gap-2 px-7 py-[13px] rounded-lg border border-white/[0.07] text-white text-sm font-semibold bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/[0.14] transition-all cursor-pointer"
+                style={{ opacity: 0 }}
               >
                 About Me
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
