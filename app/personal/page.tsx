@@ -123,7 +123,7 @@ export default function PersonalPage() {
         </div>
 
         <p className="text-xs text-zinc-700">
-          Athaya Akbar Ramdani · Personal Space · {new Date().getFullYear()}
+          Athaya Akbar Ramdani · Personal Space · 2026
         </p>
       </footer>
     </div>
