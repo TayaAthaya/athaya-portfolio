@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
 import { experiences } from "@/data/experiences";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -10,27 +10,69 @@ import type { Experience as ExperienceType } from "@/data/experiences";
 
 export default function Experience() {
   const [selectedExp, setSelectedExp] = useState<ExperienceType | null>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const isHoveredRef = useRef(false);
+  const offsetRef = useRef(0);
+  const reqIdRef = useRef<number | null>(null);
 
-  const scrollManual = (direction: "left" | "right") => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
+  // Speed of base marquee in px per frame (~60fps)
+  const baseSpeed = 0.8;
+  const velocityRef = useRef(baseSpeed);
 
-    // Temporarily pause auto marquee when user clicks arrows so it doesn't fight the scroll
-    setIsPaused(true);
+  useEffect(() => {
+    const updateMarquee = () => {
+      const track = trackRef.current;
+      if (track) {
+        // Total width of one complete set of cards
+        const halfWidth = track.scrollWidth / 2;
 
-    const scrollAmount = 380;
-    container.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
+        if (!isHoveredRef.current) {
+          // Slowly recover towards baseSpeed if it was boosted by manual button click
+          velocityRef.current += (baseSpeed - velocityRef.current) * 0.05;
+          offsetRef.current += velocityRef.current;
+        } else {
+          // Decay manual speed when hovered
+          velocityRef.current *= 0.92;
+          offsetRef.current += velocityRef.current;
+        }
 
-    // Resume auto-marquee after 4 seconds of idle
-    setTimeout(() => {
-      setIsPaused(false);
-    }, 4000);
-  };
+        // True seamless infinite wrap
+        if (halfWidth > 0) {
+          if (offsetRef.current >= halfWidth) {
+            offsetRef.current = offsetRef.current % halfWidth;
+          } else if (offsetRef.current < 0) {
+            offsetRef.current = halfWidth - (Math.abs(offsetRef.current) % halfWidth);
+          }
+        }
+
+        track.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`;
+      }
+
+      reqIdRef.current = requestAnimationFrame(updateMarquee);
+    };
+
+    reqIdRef.current = requestAnimationFrame(updateMarquee);
+
+    return () => {
+      if (reqIdRef.current) {
+        cancelAnimationFrame(reqIdRef.current);
+      }
+    };
+  }, []);
+
+  const handleManualNudge = useCallback((direction: "left" | "right") => {
+    const cardStep = 410; // width of card + gap
+    if (direction === "right") {
+      // Move right in perspective: cards move left faster
+      offsetRef.current += cardStep;
+      velocityRef.current = baseSpeed + 2;
+    } else {
+      // Move left: cards move right
+      offsetRef.current -= cardStep;
+      velocityRef.current = -2;
+    }
+  }, []);
 
   const renderCard = (exp: ExperienceType, keyPrefix: string, index: number) => (
     <motion.div
@@ -107,14 +149,14 @@ export default function Experience() {
           {/* Left & Right Manual Navigation Controls */}
           <div className="flex items-center gap-2.5 shrink-0 select-none">
             <button
-              onClick={() => scrollManual("left")}
+              onClick={() => handleManualNudge("left")}
               className="w-10 h-10 rounded-full border border-white/[0.08] bg-[#141417] hover:bg-[#1a1a1f] hover:border-indigo-500/40 text-zinc-400 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-lg active:scale-95"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-4 h-4 stroke-[2]" />
             </button>
             <button
-              onClick={() => scrollManual("right")}
+              onClick={() => handleManualNudge("right")}
               className="w-10 h-10 rounded-full border border-white/[0.08] bg-[#141417] hover:bg-[#1a1a1f] hover:border-indigo-500/40 text-zinc-400 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-lg active:scale-95"
               aria-label="Scroll right"
             >
@@ -124,35 +166,32 @@ export default function Experience() {
         </div>
       </div>
 
-      {/* ── CONTINUOUS INFINITE RUNNING CAROUSEL DENGAN DUKUNGAN MANUAL SCROLL ── */}
+      {/* ── TRUE SEAMLESS INFINITE RUNNING CAROUSEL ── */}
       <div
-        ref={scrollContainerRef}
-        className="relative w-full group py-4 overflow-x-auto no-scrollbar scroll-smooth"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        ref={containerRef}
+        className="relative w-full py-4 overflow-hidden"
+        onMouseEnter={() => {
+          isHoveredRef.current = true;
+        }}
+        onMouseLeave={() => {
+          isHoveredRef.current = false;
+        }}
       >
         {/* Subtle left & right edge gradient fades */}
         <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#090909] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#090909] to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-max">
+        <div
+          ref={trackRef}
+          className="flex w-max will-change-transform"
+        >
           {/* Track Set 1 */}
-          <div
-            className={`flex shrink-0 items-stretch gap-6 animate-marquee pr-6 ${
-              isPaused ? "[animation-play-state:paused!important]" : ""
-            }`}
-          >
+          <div className="flex shrink-0 items-stretch gap-6 pr-6">
             {experiences.map((exp, idx) => renderCard(exp, "set1", idx))}
           </div>
 
-          {/* Track Set 2 (Exact duplicate for seamless continuous wrap) */}
-          <div
-            className={`flex shrink-0 items-stretch gap-6 animate-marquee pr-6 ${
-              isPaused ? "[animation-play-state:paused!important]" : ""
-            }`}
-            aria-hidden="true"
-          >
+          {/* Track Set 2 (Seamless clone) */}
+          <div className="flex shrink-0 items-stretch gap-6 pr-6" aria-hidden="true">
             {experiences.map((exp, idx) => renderCard(exp, "set2", idx))}
           </div>
         </div>
